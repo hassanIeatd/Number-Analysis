@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية النخبة الدولية للتدريب والتنمية IEAtd</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #000;
+        }
+        .main-title {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #0b0b0b;
+            text-align: center;
+            flex: 1;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 100px;
+            resize: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            width: 48%;
+            padding: 12px;
+            background-color: #dd0638;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #550b0b;
+            border-radius: 10px;
+        }
+        .output-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .output {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            overflow-y: auto;
+            text-align: left;
+            margin-right: 10px;
+        }
+        .output h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            color: rgb(252, 3, 211);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="img/WhatsApp Image 2024-07-24 at 11.59.40 AM.jpeg" alt="Logo">
+                <div class="logo-text">أكاديمية النخبة الدولية للتدريب والتنمية<span style="color: #ef071a;"> IEAtd </span></div>
+            </div>
+            <div class="main-title">    analysis and processing    <span style="color: #ef071a;"> Number </span>       </div>
+        </div>
+        <textarea id="inputText" placeholder=" الصق الأرقام هنا يا صديقي ..."></textarea><br>
+        <div class="button-container">
+            <button onclick="processNumbers()">تحليل و معالجة الارقام</button>
+            <button onclick="selectOutput()">نسخ كل الارقام</button>
+        </div>
+        <h2>النتيجة:</h2>
+        <div class="output-container">
+            <div id="output1" class="output">
+                <h3>الأرقام السعودية</h3>
+            </div>
+            <div id="output2" class="output">
+                <h3>الأرقام الكويتية</h3>
+            </div>
+            <div id="output3" class="output">
+                <h3>الأرقام القطرية</h3>
+            </div>
+            <div id="output4" class="output">
+                <h3>الأرقام الإماراتية</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function processNumbers() {
+            const inputText = document.getElementById("inputText").value;
+            const cleanedText = inputText.replace(/[^\d+]/g, '');
+            const numbersArray = cleanedText.split(/(?=\+)/);
+            const saudiNumbers = [];
+            const kuwaitNumbers = [];
+            const qatarNumbers = [];
+            const emiratesNumbers = [];
+
+            numbersArray.forEach(num => {
+                const trimmedNum = num.trim();
+                if (trimmedNum.startsWith('+966')) {
+                    saudiNumbers.push(trimmedNum);
+                } else if (trimmedNum.startsWith('+965')) {
+                    kuwaitNumbers.push(trimmedNum);
+                } else if (trimmedNum.startsWith('+974')) {
+                    qatarNumbers.push(trimmedNum);
+                } else if (trimmedNum.startsWith('+971')) {
+                    emiratesNumbers.push(trimmedNum);
+                }
+            });
+
+            document.getElementById("output1").innerHTML = "<h3>الأرقام السعودية</h3><p>" + saudiNumbers.join('<br>') + "</p>";
+            document.getElementById("output2").innerHTML = "<h3>الأرقام الكويتية</h3><p>" + kuwaitNumbers.join('<br>') + "</p>";
+            document.getElementById("output3").innerHTML = "<h3>الأرقام القطرية</h3><p>" + qatarNumbers.join('<br>') + "</p>";
+            document.getElementById("output4").innerHTML = "<h3>الأرقام الإماراتية</h3><p>" + emiratesNumbers.join('<br>') + "</p>";
+        }
+
+        function selectOutput() {
+            const outputElements = [
+                document.getElementById("output1"),
+                document.getElementById("output2"),
+                document.getElementById("output3"),
+                document.getElementById("output4")
+            ];
+
+            let combinedText = '';
+            outputElements.forEach(element => {
+                const paragraphs = element.getElementsByTagName('p');
+                for (let p of paragraphs) {
+                    p.classList.add('highlight');
+                    combinedText += p.innerText + '\n';
+                }
+            });
+
+            try {
+                navigator.clipboard.writeText(combinedText).then(() => {
+                    alert('يا صديقي تم نسخ كل الأرقام إلى الحافظة');
+                }, () => {
+                    alert('حاول مرة أخرى يا صديقي');
+                });
+            } catch (err) {
+                alert('تعذر نسخ الأرقام');
+            }
+        }
+    </script>
+</body>
+</html>
